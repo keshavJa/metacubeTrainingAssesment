@@ -1,0 +1,102 @@
+public class AccountSearchController {
+    public Account acc {get;set;}   
+    public ApexPages.StandardSetController con{get; set;} 
+    
+    public Integer numberOfAccounts {get;set;}
+    public String billingCityStr {get;set;}
+    public String billingStateStr {get;set;}
+    public String billingCountryStr {get;set;}
+    
+    public AccountSearchController(){
+        accounts = new List<Account>();
+        acc = new Account();
+    }
+    
+    public List<Account> accounts 
+    {  
+        get  
+        {  
+            if(con != null)  
+                return (List<Account>)con.getRecords();  
+            else  
+                return null ;  
+        }  
+        set;
+    }  
+    
+    public PageReference searchAccount(){
+        String query = '';
+        String strFilter = '';
+        if(null != billingCityStr && billingCityStr.trim() != ''){
+            strFilter  = strFilter  +  ' where BillingCity Like \''+billingCityStr+'%\'' ;
+        }
+        if(null != billingStateStr && billingStateStr.trim() != ''){
+            if(strFilter == '')
+            strFilter  = strFilter  +  ' where BillingState Like \''+billingStateStr+'%\'' ;
+            else
+                strFilter  = strFilter  +  ' And BillingState like \''+billingStateStr+'%\'' ;
+        }        
+        if(null != billingCountryStr && billingCountryStr.trim() != ''){
+            if(strFilter == '')
+            strFilter  = strFilter  +  ' where BillingCountry Like \''+billingCountryStr+'%\'' ;
+            else
+                strFilter  = strFilter  +  ' And BillingCountry like \''+billingCountryStr+'%\'' ;
+        }
+        
+               
+        if(null != numberOfAccounts && 0 != numberOfAccounts ){
+            strFilter  = strFilter  +  ' Limit '+numberOfAccounts ;
+        }
+        else{
+            numberOfAccounts = null;
+        }
+        query = 'select id, Name, BillingCity, BillingState, BillingCountry from Account '+strFilter;
+        system.debug('query = '+query);
+        con = new ApexPages.StandardSetController(Database.getQueryLocator(query)); 
+        con.setPageSize(2);
+        
+        
+        return null;
+    }
+    public Boolean hasNext  
+    {  
+        get  
+        {  
+            return con.getHasNext();
+        }  
+        set;  
+    }  
+    public Boolean hasPrevious  
+    {  
+        get  
+        {  
+            return con.getHasPrevious();  
+        }  
+        set;  
+    }  
+    public Integer pageNumber  
+    {  
+        get  
+        {  
+            return con.getPageNumber();  
+        }  
+        set;  
+    }  
+    public void first()  
+    {  
+        con.first();  
+    }  
+    
+    public void last()  
+    {  
+        con.last();  
+    }  
+    public void previous()  
+    {  
+        con.previous();  
+    }  
+    public void next()  
+    {  
+        con.next();  
+    }  
+}

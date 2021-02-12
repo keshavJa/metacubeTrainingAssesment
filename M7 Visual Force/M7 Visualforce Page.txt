@@ -1,8 +1,8 @@
 Exercise - Create visualforce pages for Class and Student object and override standard “New” and “Edit” buttons.
 Ans :- 	Object		VF Page Name		Controller Name
 ----------------------------------------------------------------------------------
-	Class		ClassFormNew		ClassDataWithController
-	Student		StudentFormCreateEdit	StudentDataWithController
+	Class		CreateNewClass			
+	Student		CreateNewStudent
 
 Ex:- Create a Page Where some Filters in BilingCity, BillingState, BillingCountry of Account and Click on Search button for displaying first 10 Accounts at a Time and Provide Pagination for (Previous Next and First and Last).
 Ans :- 	Object		VF Page Name		Controller Name

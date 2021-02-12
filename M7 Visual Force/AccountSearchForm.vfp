@@ -1,0 +1,72 @@
+<apex:page Controller="AccountSearchController" >
+    <apex:form > 
+        <apex:messages />
+        <apex:pageBlock title="Account Search" tabStyle="Account" id="details" >
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!searchAccount}" value="Search" />
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection id="search_input_section">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="No Of Accounts to Show" />
+                    <apex:inputText value="{!numberOfAccounts}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing City" />
+                    <apex:inputText value="{!billingCityStr}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing State" />
+                    <apex:inputText value="{!billingStateStr}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing Country" />
+                    <apex:inputText value="{!billingCountryStr}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="accont_list">
+                <apex:pageBlockTable value="{!accounts}" var="a" id="accont_list_table" >
+                    <apex:column >
+                        <apex:facet name="header">Account Name</apex:facet>
+                        {!a.Name}
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">Billing City</apex:facet>
+                        {!a.BillingCity}
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">Billing State Province</apex:facet>
+                        {!a.BillingState}
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">Billing Country</apex:facet>
+                        {!a.BillingCountry}
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>  
+        
+        <apex:commandLink action="{!First}" title="First Page" value="First Page" rendered="{!Con.HasPrevious}"/>  
+        <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}">First</apex:outputPanel> &nbsp;           
+        
+        <apex:commandLink action="{!Previous}" title="Previous" value="Previous Page" rendered="{!Con.HasPrevious}"/>  
+        <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}">Previous Page</apex:outputPanel> &nbsp;
+        
+        <apex:commandLink action="{!Next}" title="Next Page" value="Next Page" rendered="{!Con.HasNext}" /> 
+        <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}">Next</apex:outputPanel> &nbsp;
+        
+        <apex:commandLink action="{!Last}" title="Last" value="Last" rendered="{!Con.HasNext}"/>  
+        <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}">Last</apex:outputPanel> &nbsp;           
+        
+        
+        
+    </apex:form>
+</apex:page>

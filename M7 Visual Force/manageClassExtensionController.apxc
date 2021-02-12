@@ -1,0 +1,53 @@
+public class manageClassExtensionController {
+    public List<class__c> cList{get;set;}
+    public Class__c classobj{get;set;}
+    public string SelectedClassId { get; set; }
+    //public String Name{get; set;}
+    //public String board{get; set;}
+    public String maxSize{get; set;}
+    public boolean visible{get;set;}
+    
+    public manageClassExtensionController() {
+        LoadDataIncList();
+        classobj = new Class__c();
+    }
+    
+    private void LoadDataInCList() {
+        cList = [select Name, id from class__C];
+    }
+    
+    private void LoadDataInClassobj(String classId) {
+        classobj = [SELECT Id, Max_Size__c, Board__c, Name, Class_Teacher__c, Custom_Status__c 
+                    FROM Class__c
+                    where id =:classId];
+    }
+    
+    public void EditClass(){
+        LoadDataInClassobj(SelectedClassId);
+        this.visible = true;
+    } 
+    
+    public PageReference renderhide(){
+        update classobj;
+        cList = [select Name, id from class__C];
+        classobj = null;
+        this.visible = false;
+        return null;
+    }
+    
+    public void DeleteClass()
+    {   
+        // if for any reason we are missing the reference 
+        if (SelectedClassId == null) {
+            return;
+        }
+        // find the class in assign into class object
+        LoadDataInClassobj(SelectedClassId);
+        if(null != classobj){ 
+            Delete classobj;
+            classobj = null;
+        } 
+        //refresh the data
+        LoadDataIncList();
+    }    
+}
