@@ -1,0 +1,19 @@
+trigger accountTestTriggerM12 on Account (before insert, before update) {
+    /* for(Account a: Trigger.new) {
+        List<Contact> contacts = [select id, salutation, firstname, lastname, email
+        from Contact where accountId = :a.Id];
+        for(Contact c: contacts) {
+            System.debug('Contact Id[' + c.Id + '], FirstName[' + c.firstname + '], + LastName[' + c.lastname +']');
+            c.Description=c.salutation + ' ' + c.firstName + ' ' + c.lastname;
+            update c;
+        }
+    
+    } Old Code */
+    
+    List<Contact> contactToBeUpdate = new List<Contact>();
+    for(Contact c : [select id, salutation, firstname, lastname, email from Contact where accountId IN :Trigger.newMap.keySet()]){
+        c.Description=c.salutation + ' ' + c.firstName + ' ' + c.lastname;
+        contactToBeUpdate.add(c);                         
+    }
+    update contactToBeUpdate;
+}

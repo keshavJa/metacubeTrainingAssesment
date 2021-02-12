@@ -1,0 +1,3 @@
+Que 1:- Trigger name :- accountTestTriggerM12
+Que 2:- Trigger Name :- accountTriggerQ2M12
+Que 3:- Trigger Name :- accountLimitExampleQ3M12

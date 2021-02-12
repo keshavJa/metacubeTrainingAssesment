@@ -1,0 +1,10 @@
+M5 Apex Triggers
+Que 1:- Trigger Name:- TeacherConstraintTrigger
+Que 2:- Trigger Name:- ClassDeleteTrigger 
+Que 3:- Trigger Name:- StudentInsertionTrigger
+Que 4:- Trigger Name:- StudentInsertionTrigger	
+Que 5:- Trigger Name:- OpportunityStgeChangeTrigger
+Que 6:- Trigger Name:- ClassDeleteTrigger 
+
+M3 Apex Language Assignment 2
+Q3. 	class name:- UpdateOFOpportunity, Trigger Name:- UpdateOFOpportunityTrigger

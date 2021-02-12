@@ -1,0 +1,22 @@
+1. SELECT Name, Date_of_Birth__c, Gender__c FROM Student__c WHERE Last_Name__c LIKE 'S%'.
+2. SELECT Name, Date_of_Birth__c, Gender__c, Email_ID__c, First_Name__c, Marital_Status__c, Spouse_Name__c, Age__c FROM Student__c WHERE Class__r.Name LIKE 'X%'.
+3. SELECT Name, Date_of_Birth__c, Gender__c, Email_ID__c, First_Name__c, Marital_Status__c, Spouse_Name__c, Age__c, Class__r.Name FROM Student__c.  
+4. SELECT Name, (SELECT Name, Date_of_Birth__c, Gender__c FROM Students__r) FROM Class__c
+5. SELECT Name, Date_of_Birth__c, Gender__c, Email_ID__c, First_Name__c, Marital_Status__c, Spouse_Name__c, Age__c, Class__c FROM Student__c where Class__r.Class_Teacher__r.Name Like 'N%'
+6. SELECT Name, Date_of_Birth__c, Gender__c, Email_ID__c, First_Name__c, Marital_Status__c, Spouse_Name__c, Age__c, Class__c FROM Student__c where CALENDAR_YEAR(Date_of_Birth__c) > 2000  
+7. select Id, Name from Lead where LastModifiedDate = THIS_MONTH or
+select Id, Name from Lead where SystemModStamp = THIS_MONTH (recommended to use this one query)
+8. SELECT Name, (SELECT Name, Date_of_Birth__c, Gender__c FROM Students__r where Name Like 'S%') FROM Class__c
+9. Select Teacher__r.name from Teach__c Where Subjects__c =
+'Hindi' or Subjects__c = 'English' group by Teacher__c, Teacher__r.name having count_distinct(Subjects__c)=2
+10. select name, class__r.name from student__c  where class__c
+IN (Select class__c from Teach__c Where Subjects__c = 'Hindi' or Subjects__c = 'Maths')
+11. Select Class__r.Name A, Count(Name) from Student__c group by Class__r.Name
+12. Select CALENDAR_MONTH(Date_of_Birth__c) M, Count(Name) from Student__c Group By CALENDAR_MONTH(Date_of_Birth__c) order by CALENDAR_MONTH(Date_of_Birth__c) Desc
+
+SOSL
+1. Find {Pankaj} RETURNING Student__c(Name),Contact(Name)
+2. Find {Pankaj} RETURNING Student__c(Name Where Gender__c = 'Male'), Contact(Name Where Sex= 'Male')
+
+
+
