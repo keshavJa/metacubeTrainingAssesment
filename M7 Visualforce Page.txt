@@ -1,0 +1,32 @@
+Exercise - Create visualforce pages for Class and Student object and override standard “New” and “Edit” buttons.
+Ans :- 	Object		VF Page Name		Controller Name
+----------------------------------------------------------------------------------
+	Class		ClassFormNew		ClassDataWithController
+	Student		StudentFormCreateEdit	StudentDataWithController
+
+Ex:- Create a Page Where some Filters in BilingCity, BillingState, BillingCountry of Account and Click on Search button for displaying first 10 Accounts at a Time and Provide Pagination for (Previous Next and First and Last).
+Ans :- 	Object		VF Page Name		Controller Name
+----------------------------------------------------------------------------------
+	Account		AccountSearchForm	AccountSearchController
+
+Ex:- As you have created two new fields (BillToContact and Manager) on Opportunity previously. Now requirement is select BillToContact using Custom LookUp (This lookup displays list of Contacts related to that Manager on Opportunity).
+
+Ans :- Object		VF Page Name		Controller Name
+----------------------------------------------------------------------------------
+	Student		BillToContactList	BillToContactListController
+
+
+EX:- Generate PDF 
+Ans :- Object		VF Page Name					Controller Name
+----------------------------------------------------------------------------------
+	Student		StudentDataAsPDF and StudentDataAsPDGForDATA	StudentDataAsPDGController
+
+EX: Create a page which show output as a JSON formatted string. (We can use this mechanism when we send response to any service as a JSON)
+Ans :-	 Object		VF Page Name		Controller Name
+----------------------------------------------------------------------------------
+	Account		ParseStringIntoJSON	ParseStringIntoJSONController
+
+Ex:- Create a Visualforce Page named manageClass , on this page show list of available classes with Edit and Delete Link. When will user click on Edit a small Area displayed just below the same page with some fields (4-5 fields). User can save and return back to same Page. (You can use ajax functionality for same).
+Ans :-	 Object		VF Page Name		Controller Name
+----------------------------------------------------------------------------------
+	Class__c	manageClass 		manageClassExtensionController
