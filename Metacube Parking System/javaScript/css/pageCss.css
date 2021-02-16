@@ -1,0 +1,306 @@
+body 
+{
+	background-image: url('../images/parkingBg10.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;  
+	background-size: cover;
+}
+
+#header 
+{
+	background-image: url('../images/parkingBg7.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;  
+	background-size: cover;
+	text-align: center;
+	text-shadow: 2px 2px red;
+	margin-top: -10px;
+}
+
+#imgHeaderDiv{
+	background-image: url('../images/parkingBg8.jpg');
+	height: 200px;
+}
+
+nav{
+	margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+ul.horizontal {
+	
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.horizontal li {
+	float: left;
+}
+
+ul.horizontal li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.horizontal li a:hover:not(.active) {
+    background-color: #4CAF50;
+}
+
+ul.horizontal li a.active {
+    background-color:red;
+} 
+/**Start CSS For Text Field of Form  **/
+
+.defaultTextValue{
+	display:none;
+} 
+
+input[type=text],input[type=password],input[type=email], input[type=tel], select, textarea {
+  padding: 12px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+
+input[type=text]:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+input[type=password]:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+input[type=email]:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+input[type=tel]:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+
+select:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+ textarea:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+ 
+table {
+  width:100%;
+  text-align: left;
+  color: blue;
+  font-size: 20px;
+  font-weight: bold;
+}
+ 
+/**End CSS For Text Field of Form  **/
+ 
+.formSectionForNav{
+	position:relative;
+	display:block;
+	background-color:white;
+	border:solid 1px #e0e0e0;
+}
+
+.formSectionForNav-Item{
+	display:block;
+}
+
+.formSectionForNav-content{
+	width:100%;
+	position:relative;
+	padding:0;
+	height:0;
+	overflow:hidden;
+	transition: height 0.5s ease, padding0.3s ease;
+	border: solid 1px red;	
+	border-radius: 10px;
+	background-image: url('../images/parkingBg5.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;  
+	background-size: cover;
+}
+
+.formSectionForNav .formSectionForNav-content form{
+	padding: 20px;
+	margin: 0;
+}
+
+.formSectionForNav .formSectionForNav-content:target{
+	height: 850px;
+	background-image: url('../images/parkingBg5.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;  
+	background-size: cover;
+}
+
+
+.formSectionForNav .formSectionForNav__trigger{
+	text-decoration:none;
+}
+
+.formSectionForNav .formSectionForNav_title{
+	position:relative;
+	display:block;
+	margin:0;
+	padding: 10px;
+	font-size: 1em;
+	background: #00B3B4;
+	color: white;
+	border-radius: 10px;
+	border: solid 1px #379AA4;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset,
+				0 -1px 0 rgba(255,255,255,0.10) inset,
+				0 4px 0 #338A94,
+				0 4px 2px rgba(0,0,0,0.5),
+}
+
+.formSectionForNav .formSectionForNav_title:hover{
+	background-color: #0bbfc9;
+}
+
+.formSectionForNav .formSectionForNav_title::after{
+	position: absolute;
+	content: "";
+	top: calc(50%-7px);
+	right: 20px;
+	width: 7px;
+	height: 7px;
+	border-left: solid 2px white;
+	border-bottom: solid 2px white;
+	transform: rotate(-45deg);
+}
+
+/* Create three equal columns that floats next to each other */
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 20px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 20px;
+  border-radius:50%;
+  float:right;
+  border: solid 1px red;
+}
+
+.priceDivRow{
+}
+.priceDivColumn {
+  float: left;
+  width: 30%;
+  padding: 15px;
+  
+	border: solid 1px red;
+}
+
+/* Clear floats after the columns */
+.priceDivRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .priceDivColumn {
+    width: 100%;
+  }
+}
+.divPriceBorder{
+	border: solid 1px black;
+	width:21%; 
+	float:left; 
+	margin-left:80px;
+}
+
+.rcorners1 {
+  border-radius: 50%;
+  background: #73AD21;
+  padding: 0px; 
+  width: 10px;
+  height: 200px;
+  margin-left:-110px;
+  border: solid 1px black;
+  
+} 
+.pricepara01{
+	margin-left:80px;
+	font-weight: bold;
+	color:black
+}
+
+.pricepara02{
+	margin-left:80px;
+	margin-top: -20px;
+	font-weight: bold;
+	color:black
+}
+
+.priceParaDaily01{
+	margin-left:50px;
+	color:black;
+	opacity:.4;
+}
+
+.priceParaYearly01{
+	margin-left:50px;  
+	margin-top: -20px;
+	color:black;
+	opacity:.6;
+}
+
