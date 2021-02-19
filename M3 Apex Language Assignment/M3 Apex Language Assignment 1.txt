@@ -1,0 +1,7 @@
+Que 1:- Class Name:- AllStudent Function Name:- getAllStudentFromClass().
+
+Que 2:- Class Name:- AllStudent Function Name:- getClassWithAssociatedStudents().
+
+Que 3:- Class Name:- AllStudent Function Name:- calculateWorkingDays()
+
+Que 4:- Class Name:- AllStudent Function Name:- allsObjects()
