@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Invoice" icon-name="action:download">
+            <div>
+                <div class="invoice_header">
+                    <p>{invoice}</p>
+                </div>
+                <div class="slds-text-align_center">
+                    <p>{invoiceDate}</p>
+                </div>
+            </div>
+            <lightning-datatable
+                key-field="Id"
+                data={invoiceCartData}
+                columns={invoiceCartColumns}
+                hide-checkbox-column
+            >
+            </lightning-datatable><br/><br/><br/>
+            <lightning-button variant="brand" label="Place Order" 
+             title="Place Order" onclick={placeOrderHandler} 
+             disabled={isPlaceOrderBTNDisabled} 
+             class="slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+    
+</template>

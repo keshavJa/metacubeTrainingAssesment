@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Cart" icon-name="action:description">
+            <lightning-datatable
+                key-field="Id"
+                data={cartData}
+                columns={cartColumns}
+                draft-values={saveDraftValues} 
+                oncellchange={cellChangeHandler}
+                errors={cartErrors}
+                onrowaction={handleRowAction}
+                hide-checkbox-column
+            >
+            </lightning-datatable><br/><br/><br/>
+            <lightning-button variant="brand" label="Check Out" 
+             title="Check Out" onclick={cartCheckOutHandler} 
+             disabled={isCheckOutBTNDisabled} 
+             class="slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+</template>

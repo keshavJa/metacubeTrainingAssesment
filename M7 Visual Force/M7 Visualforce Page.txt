@@ -11,15 +11,15 @@ Ans :- 	Object		VF Page Name		Controller Name
 
 Ex:- As you have created two new fields (BillToContact and Manager) on Opportunity previously. Now requirement is select BillToContact using Custom LookUp (This lookup displays list of Contacts related to that Manager on Opportunity).
 
-Ans :- Object		VF Page Name		Controller Name
-----------------------------------------------------------------------------------
-	Student		BillToContactList	BillToContactListController
+Ans :- Object		VF Page Name		Controller Name			
+-------------------------------------------------------------------------------
+	Student		BillToContactList	BillToContactListController	
 
 
 EX:- Generate PDF 
-Ans :- Object		VF Page Name					Controller Name
-----------------------------------------------------------------------------------
-	Student		StudentDataAsPDF and StudentDataAsPDGForDATA	StudentDataAsPDGController
+Ans :- Object	VF Page Name				 Controller Name		ServiceName		  SelectorName
+-----------------------------------------------------------------------------------------------------------------------------------------
+      Student	StudentDataAsPDF,StudentDataAsPDGForDATA StudentDataAsPDGController	StudentDataAsPDFService	  StudentDataAsPDFSelector, AttachmentSelector
 
 EX: Create a page which show output as a JSON formatted string. (We can use this mechanism when we send response to any service as a JSON)
 Ans :-	 Object		VF Page Name		Controller Name
