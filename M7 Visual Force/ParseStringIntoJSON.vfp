@@ -1,3 +1,0 @@
-<apex:page controller="ParseStringIntoJSONController" action="{!parseJson}" contentType="application/json; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
-    {!text1}
-</apex:page>
