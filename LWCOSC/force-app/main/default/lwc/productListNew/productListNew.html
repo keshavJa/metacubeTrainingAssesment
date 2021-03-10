@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title={purchaseOrderHeaderLabel} icon-name="action:description">
+        <div class="slds-card__body_inner">
+            <lightning-input type="search"
+                        onchange={handleSearchTermChange}
+                        variant="label-hidden"
+                        class="search_button"
+                        label="Search"
+                        placeholder="Search By Product Name"
+                        value={searchKey}
+                        disabled={isSearchInputDisable} 
+                        >
+            </lightning-input>
+        </div >
+         <lightning-button variant="brand" label="Go To Cart" 
+         title="Go To Cart" onclick={goToCartHandler} 
+         disabled={isGoToCartBTNDisabled} 
+         class="slds-m-left_x-small"></lightning-button></br></br></br>
+
+        <lightning-datatable 
+            class="productListTableClass"
+            key-field="Id"
+            data={data}
+            columns={columns}
+            sorted-by={sortedBy}
+            sorted-direction={sortedDirection} 
+            onsort={sortColumns}
+            selected-rows={setSelectedRows}
+            hide-checkbox-column={hideCheckProductListTable}
+        >
+        </lightning-datatable>
+        <div class="slds-m-around_medium">
+            <p class="slds-m-vertical_medium content">
+                    Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records.
+                    Page {page} of {totalPage}. </p>
+            <c-do-pagination  
+                onfirst={firstHandler}
+                onprevious={previousHandler} 
+                onnext={nextHandler}
+                onlast={lastHandler}
+            >
+            </c-do-pagination>
+        </div >
+    </lightning-card>
+</template>

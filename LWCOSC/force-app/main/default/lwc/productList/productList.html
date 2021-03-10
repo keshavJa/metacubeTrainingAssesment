@@ -1,0 +1,102 @@
+<template>
+    <lightning-card title={header}>
+        
+        <!-- Purchase Order Table --> 
+        <template if:true={purchaseOrderGrid}>
+            <lightning-datatable
+                key-field="Id"
+                data={purchaseOrderDataItems}
+                columns={purchaseOrderColumns}
+                hide-checkbox-column="true" 
+            >
+            </lightning-datatable><br/><br/><br/>
+            <lightning-button variant="brand" label="New Purchase" 
+             title="New Purchase" onclick={newPurchaseBtnHandler} 
+             class="slds-m-left_x-small"></lightning-button>
+        </template> <br/><br/><br/><br/><br/> 
+    
+    
+        <!-- Product List Table -->
+        <template if:true={productListGrid}>
+            <div class="slds-card__body_inner">
+                <lightning-input type="search"
+                            onchange={handleSearchTermChange}
+                            variant="label-hidden"
+                            class="search_button"
+                            label="Search"
+                            placeholder="Search By Product Name"
+                            value={searchKey}
+                            >
+                </lightning-input>
+            </div>
+             <!-- Brand variant: Identifies the primary action in a group of buttons -->
+             <lightning-button variant="brand" label="Go To Cart" 
+             title="Go To Cart" onclick={goToCartHandler} 
+             disabled={isGoToCartBTNDisabled} 
+             class="slds-m-left_x-small"></lightning-button></br></br></br>
+            <lightning-datatable 
+                id="productListTable"
+                class="productListTableClass"
+                key-field="Id"
+                data={data}
+                columns={columns}
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection} 
+                onsort={sortColumns}
+                selected-rows={setSelectedRows}
+                hide-checkbox-column={hideCheckProductListTable}
+            >
+            </lightning-datatable>
+            <div class="slds-m-around_medium">
+                <p class="slds-m-vertical_medium content">
+                        Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records.
+                        Page {page} of {totalPage}. </p>
+                <c-do-pagination  
+                    onfirst={firstHandler}
+                    onprevious={previousHandler} 
+                    onnext={nextHandler}
+                    onlast={lastHandler}
+                >
+                </c-do-pagination>
+            </div>
+        </template>
+        <!-- Product Cart Table -->
+        <template  if:true={cartDataGrid} >
+            <lightning-datatable
+                key-field="Id"
+                data={cartData}
+                columns={cartColumns}
+                draft-values={saveDraftValues} 
+                oncellchange={cellChangeHandler}
+                errors={errors}
+                onrowaction={handleRowAction}
+                hide-checkbox-column
+            >
+            </lightning-datatable><br/><br/><br/>
+            <lightning-button variant="brand" label="Check Out" 
+             title="Check Out" onclick={cartCheckOutHandler} 
+             disabled={isCheckOutBTNDisabled} 
+             class="slds-m-left_x-small"></lightning-button>
+        </template> <br/><br/><br/><br/><br/>
+
+        <!-- Invoice Table -->
+        <div>
+            <p>{invoice} &nbsp;&nbsp;&nbsp;&nbsp; {invoiceDate}</p>
+            <p></p>
+        </div>
+        <template if:true={invoiceDataGrid}>
+            <lightning-datatable
+                key-field="Id"
+                data={invoiceCartData}
+                columns={invoiceCartColumns}
+                hide-checkbox-column="true" 
+            >
+            </lightning-datatable><br/><br/><br/>
+            <lightning-button variant="brand" label="Place Order" 
+             title="Place Order" onclick={placeOrderHandler} 
+             disabled={isPlaceOrderBTNDisabled} 
+             class="slds-m-left_x-small"></lightning-button>
+        </template>
+        
+    </lightning-card>
+</template>
