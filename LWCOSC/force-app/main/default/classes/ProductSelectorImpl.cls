@@ -1,4 +1,4 @@
-public with sharing class ProductSelectorImpl extends fflib_SObjectSelector implements IProductSelector  {
+public inherited sharing class ProductSelectorImpl extends fflib_SObjectSelector implements IProductSelector  {
     
     String sortBy;
     String sortDirection;

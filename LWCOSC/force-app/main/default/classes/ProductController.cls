@@ -2,15 +2,17 @@ public with sharing class ProductController {
     
     @AuraEnabled(cacheable=true)
     public static List<Product2> getProducts(String searchKey, String sortBy, String sortDirection) {
-        ProductServiceImpl proSerImpl = new ProductServiceImpl();
+        //ProductServiceImpl proSerImpl = new ProductServiceImpl();
         List<Product2> prodList = new List<Product2>();
         try{
-            prodList= proSerImpl.getProducts(searchKey, sortBy, sortDirection);
+            prodList = ProductService.getProducts(searchKey, sortBy, sortDirection);
+            //prodList= proSerImpl.getProducts(searchKey, sortBy, sortDirection);
             return prodList;
         }
         catch(Exception ex){
             System.System.debug('Exception in ProductController at method getProducts = '+ex.getMessage());
-            return prodList;
+            throw new AuraHandledException(ex.getMessage());
+            //return prodList;
         }
         
     }
@@ -20,14 +22,17 @@ public with sharing class ProductController {
         ProductServiceImpl proSerImpl = new ProductServiceImpl();
         List<String> result = new List<String>();
         try{ 
-            result = proSerImpl.updatePurchaseOrderRecords(objList, userId);
+            //result = proSerImpl.updatePurchaseOrderRecords(objList, userId);
+            //return result;
+            result = ProductService.updatePurchaseOrderRecords(objList, userId);
             return result;
         }
         catch(Exception ex){
             System.System.debug(ex.getCause());
             System.System.debug(ex.getMessage());
             System.System.debug(ex.getStackTraceString());
-            return result;
+            throw new AuraHandledException(ex.getMessage());
+            //return result;
         }
         
     }

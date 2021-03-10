@@ -1,4 +1,4 @@
-public with sharing class PurchaseOrderSelectorImpl extends fflib_SObjectSelector implements IPurchaseOrderSelector {
+public inherited sharing class PurchaseOrderSelectorImpl extends fflib_SObjectSelector implements IPurchaseOrderSelector {
    
     public List<Schema.SObjectField> getSObjectFieldList() {
         return new List<Schema.SObjectField> {

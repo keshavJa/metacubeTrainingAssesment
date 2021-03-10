@@ -8,6 +8,8 @@ import PRICE_FIELD from '@salesforce/schema/Product2.Total_Price__c';
 import PRODUCT_CODE_FIELD from '@salesforce/schema/Product2.ProductCode';
 import AVAILABLE_UNITS_FIELD from '@salesforce/schema/Product2.Available_Quantity__c';
 
+import PURCHASE_ORDER_HEADER_LABEL from '@salesforce/label/c.Product_Header';
+
 
 const PRODLISTCOLUMNS = [
     { label: 'Name', fieldName: NAME_FIELD.fieldApiName, type: 'text', sortable: true },
@@ -17,6 +19,14 @@ const PRODLISTCOLUMNS = [
 ];
 
 export default class ProductListNew extends LightningElement {
+    
+    @api sortedDirection = 'asc';
+    @api sortedBy = 'Name';
+	@track page = 1; //this will initialize 1st page
+    @track data = []; //data to be displayed in the table
+    purchaseOrderHeaderLabel=PURCHASE_ORDER_HEADER_LABEL
+    priorData;
+    isSearchInputDisable = false;
     productListFlag = true;
     hideCheckProductListTable = false;
 	errors=[];
@@ -25,13 +35,7 @@ export default class ProductListNew extends LightningElement {
 	isGoToCartBTNDisabled = false;
 	searchKey = '';
     setSelectedRows;
-    @api sortedDirection = 'asc';
-    @api sortedBy = 'Name';
-    priorData;
-    isSearchInputDisable = false;
-	@track page = 1; //this will initialize 1st page
     items = []; //it contains all the records.
-    @track data = []; //data to be displayed in the table
     columns; //holds column info.
     startingRecord = 1; //start record position per page
     endingRecord = 0; //end record position per page

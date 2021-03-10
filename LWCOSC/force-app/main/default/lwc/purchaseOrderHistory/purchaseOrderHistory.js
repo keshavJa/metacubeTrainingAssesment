@@ -6,6 +6,9 @@ import PO_AMOUNT_FIELD from '@salesforce/schema/Purchase_Order__c.Order_Amount__
 import Id from '@salesforce/user/Id';
 import getPurchaseOrders from '@salesforce/apex/PurchaseOrderController.getPurchaseOrders';
 
+import PURCHASE_ORDER_HEADER_LABEL from '@salesforce/label/c.Purchase_Order_Header';
+import { EventsDispatcher } from './events';
+
 
 const PURCHASEORDERCOL = [
     { label: 'PO Id', fieldName: 'Id', type: 'text' },
@@ -15,13 +18,18 @@ const PURCHASEORDERCOL = [
 
 export default class PurchaseOrderHistory extends LightningElement {
     userId = Id;
-	@api
-    purchaseOrderDataItems;
-	@api
+	purchaseOrderDataItems;
 	purchaseOrderColumns = PURCHASEORDERCOL;
+
+	purchaseOrderLabel=PURCHASE_ORDER_HEADER_LABEL;
 
 	purchaseOrderFlag = false;
 	productListFlag = false;
+
+	constructor() {
+		super();
+		this.eventsDispatcher = new EventsDispatcher(this);
+	}
 
     @wire(getPurchaseOrders, {userId: '$userId'})
 	purchaseOrderData({error, data}){
@@ -37,7 +45,7 @@ export default class PurchaseOrderHistory extends LightningElement {
 				this.purchaseOrderFlag = true;
 				this.productListFlag = false;
 			}
-			this.dispatchEvent
+			/*this.dispatchEvent
 			(
 				new CustomEvent
 				(
@@ -51,7 +59,14 @@ export default class PurchaseOrderHistory extends LightningElement {
 					
 					}
 				)
-			);
+			);*/
+			let purchaseOrderFlag= this.purchaseOrderFlag;
+			let productListFlag= this.productListFlag;
+			
+			this.eventsDispatcher.historyLoad({
+				purchaseOrderFlag,
+				productListFlag,
+			});
 		}
 		if(error){
 			this.error = error;

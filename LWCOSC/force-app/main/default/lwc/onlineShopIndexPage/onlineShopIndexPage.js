@@ -14,10 +14,14 @@ export default class OnlineShopIndexPage extends LightningElement {
     cartData=[];
 	cartErrors = [];
 	invoiceDataFlag;
-	@track invoiceCartData = [];
+	//@track invoiceCartData = [];
 	invoiceDate;
 	invoice;
 	userId = Id;
+
+	@track state = {
+		invoiceCartData :[]
+	};
 
     historyHandler(event){
        this.purchaseOrderFlag = event.detail.purchaseOrderFlag;
@@ -291,7 +295,7 @@ export default class OnlineShopIndexPage extends LightningElement {
 			invoiceCartProduct.Total = this.calculateTotalPriceForSingleProduct(this.cartData[i].Units, this.cartData[i].Total_Price__c);
 			invoiceCartDataTemp.push(invoiceCartProduct);
 		} 
-		this.invoiceCartData = invoiceCartDataTemp;
+		this.state.invoiceCartData = invoiceCartDataTemp;
 	}
 
 	calculateTotalPriceForSingleProduct(unit, price){
@@ -309,7 +313,7 @@ export default class OnlineShopIndexPage extends LightningElement {
 	UpdateRecordInDB(){
 		let str = 'Order Date ';
 		let ins = 'Invoice No#';
-		updatePurchaseOrderRecords({ objList: this.invoiceCartData, userId:this.userId })
+		updatePurchaseOrderRecords({ objList: this.state.invoiceCartData, userId:this.userId })
             .then((result) => {
 				this.invoice = ins+result[1];
 				this.invoiceDate = str + result[0];

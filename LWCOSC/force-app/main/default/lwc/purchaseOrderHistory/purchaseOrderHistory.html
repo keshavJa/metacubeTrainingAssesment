@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="My Orders" icon-name="action:description">
+    <lightning-card title={purchaseOrderLabel} icon-name="action:description">
         <template if:true={purchaseOrderFlag}>
             <lightning-datatable
                 key-field="Id"

@@ -3,6 +3,7 @@ import { LightningElement, api, track } from 'lwc';
 import NAME_FIELD from '@salesforce/schema/Product2.Name';
 import PRICE_FIELD from '@salesforce/schema/Product2.Total_Price__c';
 import PRODUCT_CODE_FIELD from '@salesforce/schema/Product2.ProductCode';
+import Cart_Header_Label from '@salesforce/label/c.Cart_Header';
 
 
 const CARTCOLUMNS = [
@@ -24,10 +25,9 @@ export default class CartSection extends LightningElement {
 	purchaseOrderDataItems=[];
 	@track cartColumns = CARTCOLUMNS;
 	@api cartData =[];
+    @api cartErrors= [];
 	saveDraftValues; 
 	isCheckOutBTNDisabled = false;
-    @api cartErrors= [];
-	saveDraftValues;
 
 	
 	cellChangeHandler(event){
