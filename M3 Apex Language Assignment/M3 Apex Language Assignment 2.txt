@@ -1,5 +1,0 @@
-Q1.	class name:- OpportunitySchedulerAssignment
-Q2. 	class name:- AddContactIdInAccount
-Q3. 	class name:- UpdateOFOpportunity, Trigger Name:- UpdateOFOpportunityTrigger
-
-

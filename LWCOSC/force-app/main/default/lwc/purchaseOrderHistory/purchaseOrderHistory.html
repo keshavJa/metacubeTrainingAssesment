@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title={purchaseOrderLabel} icon-name="action:description">
+        <template if:true={purchaseOrderFlag}>
+            <lightning-datatable
+                key-field="Id"
+                data={purchaseOrderDataItems}
+                columns={purchaseOrderColumns}
+                hide-checkbox-column
+                onload ={historyHandler}
+            >
+            </lightning-datatable><br/><br/><br/>
+           
+        </template>
+    </lightning-card>
+</template>

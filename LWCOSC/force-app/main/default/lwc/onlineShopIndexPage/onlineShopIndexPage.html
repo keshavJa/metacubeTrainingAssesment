@@ -1,0 +1,52 @@
+<template>
+    <lightning-card>
+            
+            <c-purchase-order-history onhistoryload={historyHandler}>
+            </c-purchase-order-history>
+            <lightning-button 
+                variant="brand" 
+                label="New Purchase" 
+                title="New Purchase" 
+                onclick={newPurchaseBtnHandler} 
+                class="slds-m-left_x-small"
+                disabled ={ispurchaseOrderBtnDisabled}
+            >
+            </lightning-button>
+        
+        
+        <template if:true={productListFlag}>
+            <c-product-list-new 
+                ongotocartclick={goToCartClickHandler}
+            >
+                
+            </c-product-list-new>
+        </template >
+
+        <template if:true={cartDataFlag}>
+            <c-cart-section 
+                oncartcellchange={cartCellChangeHandler} 
+                oncartrowaction={cartRowActionhandler}
+                oncartcheckoutevent={cartCheckOutEventHandler}
+                cart-data={cartData}
+                cart-errors={cartErrors}
+            >
+                
+            </c-cart-section>
+        </template>
+
+        
+        <template if:true={invoiceDataFlag}>
+            <c-invoice-items 
+                invoice={invoice}
+                invoice-date={invoiceDate}
+                onplaceorderbtnclick={placeOrderHandler} 
+                invoice-cart-data={state.invoiceCartData}
+            >
+                
+            </c-invoice-items>
+        </template>
+
+
+    </lightning-card>
+    
+</template>
